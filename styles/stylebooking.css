@@ -1,0 +1,380 @@
+
+/* Base Styles - Re-use from index.html for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f8f8;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+/* Navigation Bar - Re-use from index.html */
+nav {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    transition: all 0.3s ease-in-out; /* Smooth transition for mobile menu */
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #50c9c3;
+}
+
+/* Hamburger Menu Icon */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* CTA Button - Re-use from index.html */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: #ff6f61;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
+}
+
+.cta-button:hover {
+    background-color: #e55a50;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 111, 97, 0.6);
+}
+
+/* Booking Section Specific Styles */
+.booking-section {
+    padding: 5rem 0;
+    background-color: #ffffff;
+    border-top: 5px solid transparent;
+    border-image: linear-gradient(to right, #4a90e2, #50c9c3) 1;
+}
+
+.booking-form-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.booking-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="email"],
+.booking-form input[type="tel"],
+.booking-form input[type="date"],
+.booking-form input[type="time"],
+.booking-form select,
+.booking-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.booking-form textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px;
+}
+
+.booking-form input[type="submit"] {
+    display: block;
+    width: auto; /* Allow button to size to content */
+    margin: 0 auto; /* Center the button */
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.booking-form .input-group {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.booking-form .input-group > div {
+    flex: 1;
+}
+
+/* Footer - Re-use from index.html */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #50c9c3;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #4a90e2;
+}
+
+/* --- Modal/Pop-up Styles --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Max width for larger screens */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    position: relative;
+    transform: translateY(-50px); /* Initial position for animation */
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    color: #4CAF50; /* Green for success */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.modal-content .fas {
+    font-size: 4rem;
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2rem;
+    }
+    .booking-form-wrapper {
+        padding: 1.5rem;
+    }
+    .booking-form .input-group {
+        flex-direction: column;
+        gap: 0; /* Ensure no gap when stacked */
+    }
+    .booking-form .input-group > div {
+        margin-bottom: 1.5rem; /* Add spacing between stacked inputs */
+    }
+    .booking-form .input-group > div:last-child {
+        margin-bottom: 0; /* No extra margin on the last item in a stacked group */
+    }
+
+    /* Submit button full width on mobile */
+    .booking-form input[type="submit"] {
+        width: 100%; /* Make button full width */
+        margin: 0; /* Remove auto margin to allow full width */
+    }
+
+    /* Mobile Navigation */
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Stack links vertically */
+        position: absolute;
+        top: 100%; /* Position below the nav bar */
+        left: 0;
+        width: 100%;
+        background: #2c3e50;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transform: translateY(-100%); /* Hide off-screen by default */
+        opacity: 0;
+        pointer-events: none; /* Disable interaction when hidden */
+    }
+
+    .nav-links.active {
+        transform: translateY(0); /* Slide in when active */
+        opacity: 1;
+        pointer-events: auto; /* Enable interaction */
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+
+    .nav-links a {
+        padding: 0.8rem 1rem;
+        display: block;
+    }
+
+    .nav-links .cta-button {
+        padding: 0.8rem 1.5rem; /* Adjust CTA button in mobile menu */
+        font-size: 1rem;
+        margin: 1rem auto; /* Center button in mobile menu */
+    }
+
+    /* Modal adjustments for smaller screens */
+    .modal-content {
+        width: 95%; /* More width on smaller screens */
+        padding: 20px;
+    }
+    .modal-content h3 {
+        font-size: 1.8rem;
+    }
+    .modal-content .fas {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.8rem;
+    }
+    /* Further reduce padding on the form wrapper for very small screens */
+    .booking-form-wrapper {
+        padding: 1rem;
+    }
+    .booking-form input[type="text"],
+    .booking-form input[type="email"],
+    .booking-form input[type="tel"],
+    .booking-form input[type="date"],
+    .booking-form input[type="time"],
+    .booking-form select,
+    .booking-form textarea {
+        padding: 0.6rem; /* Slightly smaller padding for inputs */
+        font-size: 0.95rem; /* Slightly smaller font size for inputs */
+    }
+    .cta-button {
+        font-size: 1rem; /* Adjust CTA button font size */
+        padding: 0.8rem 2rem;
+    }
+    /* Adjust submit button font size for very small screens */
+    .booking-form input[type="submit"] {
+        font-size: 1rem; /* Smaller font size for the submit button text */
+        padding: 0.8rem 1.5rem; /* Adjust padding to match smaller font */
+    }
+}
